@@ -1,22 +1,40 @@
-import Image from 'next/image'
-import styles from './Navbar.module.scss'
-import logo from '../../public/images/logo.svg'
 import useTranslation from 'next-translate/useTranslation';
-import { HiMenu } from "react-icons/hi";
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
+import logo from '../../public/images/logo.svg';
+import styles from './Navbar.module.scss';
 
 export default function Navbar() {
     const { t } = useTranslation('home')
+    const [isPageScrolled, setIsPageScrolled] = useState(false)
+
+    /* on scroll show border bottom to navbar */
+    useEffect(() => {
+       
+        window.addEventListener("scroll", () => {
+            if (window.pageYOffset === 0) {
+                setIsPageScrolled(false)
+            } else {
+                setIsPageScrolled(true)
+            }
+        });
+
+        return () => window.removeEventListener('scroll', () => setIsPageScrolled(false));
+    }, [])
+
+
+
     return (
-        <div className={styles.navbar}>
+        <div style={isPageScrolled ? { borderBottom: "1px solid black" } : undefined} className={styles.navbar}>
             <div className={styles.logo}>
-                <Image src={logo} width={283} height={68} alt="vironetech" />
+                <Image priority src={logo} width={283} height={68} alt="vironetech" />
             </div>
             <div className={styles.items}>
-                <p>{t('navbar.home')}</p>
-                <p>{t('navbar.opinion')}</p>
-                <p>{t('navbar.service')}</p>
-                <p>{t('navbar.work')}</p>
-                <p>{t('navbar.contact')}</p>
+                <a href='#hero'><p>{t('navbar.home')}</p></a>
+                <a href='#testimonials'><p>{t('navbar.opinion')}</p></a>
+                <a href='#service'><p>{t('navbar.service')}</p></a>
+                <a href='#project'><p>{t('navbar.work')}</p></a>
+                <a href='#contact'><p>{t('navbar.contact')}</p></a>
             </div>
         </div>
     )

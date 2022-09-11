@@ -20,12 +20,15 @@
         .socialLinks {
             width: 134px;
             display: flex;
-
+           
             justify-content: space-between;
             font-size: 18px;
 
             svg {
                 cursor: pointer;
+            }
+            a{
+                color: black;
             }
         }
 

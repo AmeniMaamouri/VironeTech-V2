@@ -5,7 +5,7 @@ const ServiceCard = ({ image, text }: { image: string, text: string }) => {
     const { t } = useTranslation('home')
     return (
         <div className={styles.serviceCard}>
-            <Image src={image} width={67} height={63} />
+            <Image alt={text} src={image} width={67} height={63} />
             <p className={styles.descrip}>{text}</p>
         </div>
     )

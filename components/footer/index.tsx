@@ -9,14 +9,14 @@ const Footer = () => {
     return (
         <div className={styles.footer}>
             <div className={styles.container}>
-                    <p>{t('footer')}</p>
-                    <div className={styles.socialLinks}>
-                        <Link href={'/'}><FaFacebookF /></Link>
-                        <Link href={'/'}><BsLinkedin /></Link>
-                        <Link href={'/'}><BsInstagram /></Link>
-                    </div>
+                <p>{t('footer')}</p>
+                <div className={styles.socialLinks}>
+                    <Link href={'https://www.facebook.com/'}><a target='_blank'><FaFacebookF /></a></Link>
+                    <Link href={'/'}><a target='_blank'><BsLinkedin /></a></Link>
+                    <Link href={'/'}><a target='_blank'><BsInstagram /></a></Link>
                 </div>
-        
+            </div>
+
         </div>
     )
 }

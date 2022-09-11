@@ -3,7 +3,9 @@ import { Carousel } from 'react-responsive-carousel'
 import styles from '../../../styles/Home.module.scss'
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import { HiArrowCircleLeft, HiArrowCircleRight } from 'react-icons/hi';
-import TestimonialItem from './TestimonialItem';
+import dynamic from 'next/dynamic';
+
+const TestimonialItem = dynamic(() => import('./TestimonialItem'))
 
 const Testimonials = () => {
     const { t } = useTranslation('home')
@@ -16,7 +18,7 @@ const Testimonials = () => {
     }
 
     return (
-        <div className={styles.testimonials}>
+        <div id='testimonials' className={styles.testimonials}>
             <p className={styles.title}>{t('Testimonial.title')}</p>
             <p className={styles.description}>{t('Testimonial.description')}</p>
             <div className={styles.carouselContainer}>

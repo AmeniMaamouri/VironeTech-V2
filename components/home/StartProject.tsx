@@ -1,6 +1,8 @@
 import useTranslation from "next-translate/useTranslation"
+import dynamic from "next/dynamic"
 import styles from '../../styles/Home.module.scss'
-import BaseButton from "../BaseButton/BaseButton"
+
+const BaseButton = dynamic(() => import('../BaseButton/BaseButton'))
 
 const StartProject = () => {
     const { t } = useTranslation('home')

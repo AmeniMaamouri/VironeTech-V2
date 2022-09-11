@@ -4,6 +4,12 @@
     padding: 35px 105px;
     background-color: rgb(249, 249, 249);
     align-items: center;
+   
+    @media (min-width:1100px) {
+        z-index: 99999;
+        position: sticky;
+        top: 0;
+    }
     
     @media (max-width: 1400px) {
         padding: 35px 40px;
@@ -20,10 +26,10 @@
 
         p {
             font-size: 17px;
-            color: $secondary-grey;
+            color: $primary-blue;
             margin-left: 64px;
             font-family: 'Poppins', sans-serif;
-            font-weight: 400;
+            font-weight: 500;
             font-weight: bold;
             cursor: pointer;
 

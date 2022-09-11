@@ -1,8 +1,9 @@
-import useTranslation from 'next-translate/useTranslation'
-import styles from '../../styles/Home.module.scss'
-import { useForm, SubmitHandler } from "react-hook-form";
-import BaseButton from '../BaseButton/BaseButton';
+import useTranslation from 'next-translate/useTranslation';
+import dynamic from 'next/dynamic';
+import { SubmitHandler, useForm } from "react-hook-form";
+import styles from '../../styles/Home.module.scss';
 
+const BaseButton = dynamic(() => import('../BaseButton/BaseButton'))
 
 type Inputs = {
     message: string,
@@ -14,13 +15,13 @@ type Inputs = {
 const Contact = () => {
     const { t } = useTranslation('home')
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm<Inputs>();
+    const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
 
 
 
     return (
-        <div className={styles.contact}>
+        <div id='contact' className={styles.contact}>
             <div className={styles.contactContainer}>
                 <p className={styles.title}>{t('contact.title')}</p>
                 <p className={styles.description}>{t('contact.description')}</p>
