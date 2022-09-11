@@ -37,5 +37,32 @@
         "description": "Nous sommes prêts, dites-nous en plus !",
         "btnStartProject": "Démarrer votre projet avec nous"
     },
+    "contact": {
+        "title": "Contactez-nous",
+        "description": "Veuillez nous contacter - nous serions ravis de travailler avec vous.",
+        "form": {
+            "name": {
+                "label": "Nom et prénom / Société *",
+                "placeholder": "Enter votre nom / société..."
+            },
+            "email": {
+                "label": "Email *",
+                "placeholder": "Votre adresse e-mail..."
+            },
+            "subject": {
+                "label": "Sujet *",
+                "placeholder": "Entrer le sujet..."
+            },
+            "message": {
+                "label": "Message *",
+                "placeholder": "Entrer votre messages..."
+            },
+            "sendBtn" : "Envoyer",
+            "errors":{
+                "required": "Ce champ est obligatoire",
+                "email":"Email invalide"
+            }
+        }
+    },
     "footer": "© 2022, VIRONETECH - Agence digital basée à Tunisie."
 }

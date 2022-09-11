@@ -9,7 +9,6 @@ const Footer = () => {
     return (
         <div className={styles.footer}>
             <div className={styles.container}>
-               
                     <p>{t('footer')}</p>
                     <div className={styles.socialLinks}>
                         <Link href={'/'}><FaFacebookF /></Link>

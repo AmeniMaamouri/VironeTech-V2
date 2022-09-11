@@ -8,9 +8,6 @@ export default function Navbar() {
     const { t } = useTranslation('home')
     return (
         <div className={styles.navbar}>
-            <div className={styles.drawerIcon}>
-                <HiMenu />
-            </div>
             <div className={styles.logo}>
                 <Image src={logo} width={283} height={68} alt="vironetech" />
             </div>
