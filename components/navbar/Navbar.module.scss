@@ -1,0 +1,58 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    padding: 35px 105px;
+    background-color: rgb(249, 249, 249);
+    align-items: center;
+    
+    @media (max-width: 1400px) {
+        padding: 35px 40px;
+    }
+
+    @media (max-width: 1100px) {
+        padding: 35px 20px;
+        gap: 15px;
+        justify-content: initial;
+    }
+
+    .items {
+        display: flex;
+
+        p {
+            font-size: 17px;
+            color: $secondary-grey;
+            margin-left: 64px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-weight: bold;
+            cursor: pointer;
+
+            @media (max-width: 1300px) {
+                margin-left: 40px;
+            }
+        }
+
+        @media (max-width: 1100px) {
+            display: none;
+        }
+    }
+
+    .drawerIcon {
+        display: none;
+        font-size: 40px;
+        position: relative;
+        padding: 5px;
+        cursor: pointer;
+        top: 5px;
+
+        @media (max-width: 1100px) {
+            display: initial;
+        }
+    }
+
+    .logo {
+        @media (max-width: 1100px) {
+            margin: auto;
+        }
+    }
+}

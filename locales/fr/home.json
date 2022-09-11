@@ -1,0 +1,41 @@
+{
+    "navbar": {
+        "home": "Accueil",
+        "opinion": "Témoignages",
+        "service": "Services",
+        "work": "Projets réalisés",
+        "contact": "Contact"
+    },
+    "hero": {
+        "description": "VironeTech, l'agence digital qui propose des solutions sur mesure et moderne en terme de création des sites web, applications mobile et design.",
+        "btn": "Démarrer votre projet avec nous"
+    },
+    "service": {
+        "title": "Nos services",
+        "description": "Gagnez du temps dans la gestion de votre business avec nos meilleurs services",
+        "services": {
+            "design": "Design et refonte des sites web et mobile",
+            "dev": "Développment des applications web et mobile",
+            "server": "Administration des serveurs et support client"
+        }
+    },
+    "project": {
+        "title": "Nos projets",
+        "description": "Découvrez nos dernières réalisations"
+    },
+    "Testimonial": {
+        "title": "Témoignages",
+        "description": "Ce qu'ils disent de nous",
+        "testimonial1": {
+            "name": "Ousmane Bah",
+            "text": "Formidable travail et rendu très apprécié ! Merci pour le professionnalisme. Je recommande à 100% !!",
+            "post": "CEO Solodou"
+        }
+    },
+    "startProject": {
+        "title": "Vous avez un projet ?",
+        "description": "Nous sommes prêts, dites-nous en plus !",
+        "btnStartProject": "Démarrer votre projet avec nous"
+    },
+    "footer": "© 2022, VIRONETECH - Agence digital basée à Tunisie."
+}
