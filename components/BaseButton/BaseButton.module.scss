@@ -6,9 +6,15 @@
     font-family: 'Roboto', sans-serif;
     font-weight: 500;
     cursor: pointer;
+
     @media (max-width: 1300px) {
         font-size: 17px;
         height: 60px;
         padding: 10px;
     }
+
+    &:disabled {
+        cursor: not-allowed;
+    }
+
 }

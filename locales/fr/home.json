@@ -62,11 +62,14 @@
                 "required": "Ce champ est obligatoire",
                 "email": "Email invalide"
             }
-        }
+        },
+        "success": "Votre message a été envoyé avec succès. Nous vous répondrons sous 12 heures au maximum.",
+        "failed": "Oups une erreur est survenue veuillez réessayer plus tard."
     },
     "technologies": {
         "title": "Technologies et outils",
         "description": "Découvrez les technologies et les outils que nous utilise"
     },
+    
     "footer": "© 2022, VIRONETECH - Agence digital basée à Tunisie."
 }

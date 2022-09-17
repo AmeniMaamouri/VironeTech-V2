@@ -1,5 +1,7 @@
+import axios from 'axios';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
+import { useState } from 'react';
 import { SubmitHandler, useForm } from "react-hook-form";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -8,20 +10,34 @@ import styles from '../../styles/Home.module.scss';
 const BaseButton = dynamic(() => import('../BaseButton/BaseButton'))
 
 type Inputs = {
-    message: string,
-    name: string,
+    contentMessage: string,
+    firstAndLastName: string,
     email: string,
     subject: string,
 };
 
 const Contact = () => {
     const { t } = useTranslation('home')
+    const [loading, setLoading] = useState<boolean>(false)
+    const { register, handleSubmit, formState: { errors }, getValues, reset, setValue } = useForm<Inputs>();
 
-    const { register, handleSubmit, formState: { errors }, getValues, reset } = useForm<Inputs>();
+    const onSubmit: SubmitHandler<Inputs> = async (contactInformations) => {
+        setLoading(true)
+        try {
+            await axios('http://api.vironetech.com/api/v1/send_mail', {
+                method: 'POST',
+                data: contactInformations
+            })
+            reset()
+            setValue('contentMessage', "")
+            setLoading(false)
+            toast.success(t('contact.success'))
+            
+        } catch (error: unknown) {
+            setLoading(false)
+            toast.error(t('contact.failed'))
+        }
 
-    const onSubmit: SubmitHandler<Inputs> = (contactInformations) => {
-        reset()
-        toast.success("Votre mail à été envoyé avec success, nous vous répondre dans les 8 heures.")
     }
 
     return (
@@ -31,13 +47,13 @@ const Contact = () => {
                 <p className={styles.description}>{t('contact.description')}</p>
                 <div className={styles.items}>
                     <div className={styles.form}>
-                        <form onSubmit={handleSubmit(onSubmit)}>
+                        <form autoComplete='off' onSubmit={handleSubmit(onSubmit)}>
 
                             <div className={styles.firstInputsContainer}>
                                 <div>
                                     <label htmlFor='name'>{t('contact.form.name.label')}</label>
-                                    <input value={getValues('name')} className={errors.name && styles.inputInvalid} id="name" type={'text'} placeholder={t('contact.form.name.placeholder')}  {...register("name", { required: true })} />
-                                    {errors.name && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
+                                    <input value={getValues('firstAndLastName')} className={errors.firstAndLastName && styles.inputInvalid} id="name" type={'text'} placeholder={t('contact.form.name.placeholder')}  {...register("firstAndLastName", { required: true })} />
+                                    {errors.firstAndLastName && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
                                 </div>
 
                                 <div>
@@ -52,13 +68,13 @@ const Contact = () => {
                                 {errors.subject && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
                             </div>
                             <div style={{ display: 'grid' }}>
-                                <label htmlFor='message'>{t('contact.form.message.label')}</label>
-                                <textarea value={getValues('message')} rows={9} className={errors.message && styles.inputInvalid} id="message" placeholder={t('contact.form.subject.placeholder')}  {...register("message", { required: true })} />
-                                {errors.message && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
+                                <label htmlFor='contentMessage'>{t('contact.form.message.label')}</label>
+                                <textarea value={getValues('contentMessage')} rows={9} className={errors.contentMessage && styles.inputInvalid} id="contentMessage" placeholder={t('contact.form.subject.placeholder')}  {...register("contentMessage", { required: true })} />
+                                {errors.contentMessage && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
                             </div>
 
                             <div className={styles.sendBtn}>
-                                <BaseButton type='submit' bg="linear" text={t('contact.form.sendBtn')} width={'100%'} />
+                                <BaseButton disabled={loading} type='submit' bg="linear" text={t('contact.form.sendBtn')} width={'100%'} />
                             </div>
                         </form>
                     </div>
