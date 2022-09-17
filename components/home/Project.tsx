@@ -10,12 +10,12 @@ const Project = () => {
             <p className={styles.description}>{t('project.description')}</p>
             <div className={styles.realease}>
                 <div className={styles.projectContainer}>
-                    <Image alt='swistore' src={'/images/project1.svg'} width={601} height={338} />
-                    <Image alt='asmywill' src={'/images/project2.svg'} width={601} height={338} />
+                    <Image alt='swistore' src={'/images/project1.jpg'} width={601} height={338} />
+                    <Image alt='asmywill' src={'/images/project2.jpg'} width={601} height={338} />
                 </div>
                 <div className={styles.projectContainer}>
-                    <Image alt='floqon' src={'/images/project3.svg'} width={601} height={338} />
-                    <Image alt='botrestapp' src={'/images/project4.svg'} width={601} height={338} />
+                    <Image alt='floqon' src={'/images/project3.jpg'} width={601} height={338} />
+                    <Image alt='botrestapp' src={'/images/project4.jpg'} width={601} height={338} />
                 </div>
                 
             </div>

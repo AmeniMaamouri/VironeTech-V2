@@ -57,12 +57,16 @@
                 "label": "Message *",
                 "placeholder": "Entrer votre messages..."
             },
-            "sendBtn" : "Envoyer",
-            "errors":{
+            "sendBtn": "Envoyer",
+            "errors": {
                 "required": "Ce champ est obligatoire",
-                "email":"Email invalide"
+                "email": "Email invalide"
             }
         }
+    },
+    "technologies": {
+        "title": "Technologies et outils",
+        "description": "Découvrez les technologies et les outils que nous utilise"
     },
     "footer": "© 2022, VIRONETECH - Agence digital basée à Tunisie."
 }

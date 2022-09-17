@@ -1,7 +1,7 @@
 import useTranslation from 'next-translate/useTranslation'
 import Image from 'next/image'
 import styles from '../../styles/Home.module.scss'
-import hero from '../../public/images/hero.svg'
+import hero from '../../public/images/hero.png'
 import dynamic from 'next/dynamic'
 
 const BaseButton = dynamic(() => import('../BaseButton/BaseButton'))

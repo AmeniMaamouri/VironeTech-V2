@@ -1,6 +1,8 @@
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast, ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import styles from '../../styles/Home.module.scss';
 
 const BaseButton = dynamic(() => import('../BaseButton/BaseButton'))
@@ -15,10 +17,12 @@ type Inputs = {
 const Contact = () => {
     const { t } = useTranslation('home')
 
-    const { register, handleSubmit, formState: { errors } } = useForm<Inputs>();
-    const onSubmit: SubmitHandler<Inputs> = data => console.log(data);
+    const { register, handleSubmit, formState: { errors }, getValues, reset } = useForm<Inputs>();
 
-
+    const onSubmit: SubmitHandler<Inputs> = (contactInformations) => {
+        reset()
+        toast.success("Votre mail à été envoyé avec success, nous vous répondre dans les 8 heures.")
+    }
 
     return (
         <div id='contact' className={styles.contact}>
@@ -32,24 +36,24 @@ const Contact = () => {
                             <div className={styles.firstInputsContainer}>
                                 <div>
                                     <label htmlFor='name'>{t('contact.form.name.label')}</label>
-                                    <input className={errors.name && styles.inputInvalid} id="name" type={'text'} placeholder={t('contact.form.name.placeholder')}  {...register("name", { required: true })} />
+                                    <input value={getValues('name')} className={errors.name && styles.inputInvalid} id="name" type={'text'} placeholder={t('contact.form.name.placeholder')}  {...register("name", { required: true })} />
                                     {errors.name && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
                                 </div>
 
                                 <div>
                                     <label htmlFor='email'>{t('contact.form.email.label')}</label>
-                                    <input id="email" className={errors.email && styles.inputInvalid} type={'text'} placeholder={t('contact.form.email.placeholder')}  {...register("email", { pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, required: true })} />
+                                    <input value={getValues('email')} id="email" className={errors.email && styles.inputInvalid} type={'text'} placeholder={t('contact.form.email.placeholder')}  {...register("email", { pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, required: true })} />
                                     {errors.email && <span className={styles.errorInputs}>{t('contact.form.errors.email')}</span>}
                                 </div>
                             </div>
                             <div style={{ display: 'grid' }}>
                                 <label htmlFor='subject'>{t('contact.form.subject.label')}</label>
-                                <input id="subject" className={errors.subject && styles.inputInvalid} type={'text'} placeholder={t('contact.form.subject.placeholder')}  {...register("subject", { required: true })} />
+                                <input value={getValues('subject')} id="subject" className={errors.subject && styles.inputInvalid} type={'text'} placeholder={t('contact.form.subject.placeholder')}  {...register("subject", { required: true })} />
                                 {errors.subject && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
                             </div>
                             <div style={{ display: 'grid' }}>
                                 <label htmlFor='message'>{t('contact.form.message.label')}</label>
-                                <textarea rows={9} className={errors.message && styles.inputInvalid} id="message" placeholder={t('contact.form.subject.placeholder')}  {...register("message", { required: true })} />
+                                <textarea value={getValues('message')} rows={9} className={errors.message && styles.inputInvalid} id="message" placeholder={t('contact.form.subject.placeholder')}  {...register("message", { required: true })} />
                                 {errors.message && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
                             </div>
 
@@ -64,6 +68,8 @@ const Contact = () => {
                     </div>
                 </div>
             </div>
+            <ToastContainer hideProgressBar position="bottom-center" />
+
         </div>
     )
 }
