@@ -27,9 +27,24 @@
         "title": "Témoignages",
         "description": "Ce qu'ils disent de nous",
         "testimonial1": {
+            "name": "Mutlaq",
+            "text": "Complete job successfully on time, and really impressive result . highly active in communication. definitely i highly recommend vironetech for design UX/ Ui work.",
+            "post": "CEO BotRRestApp"
+        },
+        "testimonial2":{
+            "name": "Cédric Corneloup",
+            "text": "Vous cherchez un super designer de pages web ? Vironetech est l'agence que je vous recommande. Elle est rapide et efficace, j'en suis pleinement satisfait et reviendrai vers lui dès que possible !",
+            "post": "Dirigeant d'entreprise"
+        },
+        "testimonial3":{
             "name": "Ousmane Bah",
-            "text": "Formidable travail et rendu très apprécié ! Merci pour le professionnalisme. Je recommande à 100% !!",
+            "text": "Formidable travail et rendu très apprécié ! Merci pour votre professionnalisme. Je recommande à 100% !!",
             "post": "CEO Solodou"
+        },
+        "testimonial4":{
+            "name": "Tony Prmt",
+            "text": "Un travail très pro, très à l'écoute et vraiment efficace ! Je pense refaire appel à vos services dès que j'en aurais besoin!",
+            "post": "CEO"
         }
     },
     "startProject": {

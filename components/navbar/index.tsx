@@ -25,7 +25,7 @@ export default function Navbar() {
 
 
     return (
-        <div style={isPageScrolled ? { borderBottom: "1px solid black" } : undefined} className={styles.navbar}>
+        <div style={isPageScrolled ? { boxShadow: "0 1px 3px rgb(0 0 0 / 10%)" } : undefined} className={styles.navbar}>
             <div className={styles.logo}>
                 <Image priority src={logo} width={283} height={68} alt="vironetech" />
             </div>

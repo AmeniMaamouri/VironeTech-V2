@@ -22,9 +22,11 @@ const Testimonials = () => {
             <p className={styles.title}>{t('Testimonial.title')}</p>
             <p className={styles.description}>{t('Testimonial.description')}</p>
             <div className={styles.carouselContainer}>
-                <Carousel infiniteLoop renderArrowPrev={renderArrowPrev} renderArrowNext={renderArrowNext} showStatus={false} showIndicators={false} showThumbs={false}>
+                <Carousel infiniteLoop autoPlay renderArrowPrev={renderArrowPrev} renderArrowNext={renderArrowNext} showStatus={false} showIndicators={false} showThumbs={false}>
                     <TestimonialItem name={t('Testimonial.testimonial1.name')} text={t('Testimonial.testimonial1.text')} post={t('Testimonial.testimonial1.post')} />
-                    <TestimonialItem name={t('Testimonial.testimonial1.name')} text={t('Testimonial.testimonial1.text')} post={t('Testimonial.testimonial1.post')} />
+                    <TestimonialItem name={t('Testimonial.testimonial2.name')} text={t('Testimonial.testimonial2.text')} post={t('Testimonial.testimonial2.post')} />
+                    <TestimonialItem name={t('Testimonial.testimonial3.name')} text={t('Testimonial.testimonial3.text')} post={t('Testimonial.testimonial3.post')} />
+                    <TestimonialItem name={t('Testimonial.testimonial4.name')} text={t('Testimonial.testimonial4.text')} post={t('Testimonial.testimonial4.post')} />
                 </Carousel>
             </div>
         </div>
