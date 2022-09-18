@@ -1,15 +1,15 @@
 import useTranslation from "next-translate/useTranslation"
 import Image from "next/image"
-import react from '../../public/images/react.jpg'
-import next from '../../public/images/next.jpg'
-import node from '../../public/images/node.jpg'
-import nest from '../../public/images/nest.jpg'
-import spring from '../../public/images/spring.jpg'
-import android from '../../public/images/android.jpg'
-import flutter from '../../public/images/flutter.jpg'
-import figma from '../../public/images/figma.jpg'
-import adobeXd from '../../public/images/adobexd.jpg'
-import wordpress from '../../public/images/wordpres.jpg'
+import react from '../../public/images/react.svg'
+import next from '../../public/images/next.svg'
+import node from '../../public/images/node.svg'
+import nest from '../../public/images/nest.svg'
+import spring from '../../public/images/spring.svg'
+import android from '../../public/images/android.svg'
+import flutter from '../../public/images/flutter.svg'
+import figma from '../../public/images/figma.svg'
+import adobeXd from '../../public/images/adobexd.svg'
+import wordpress from '../../public/images/wordpres.svg'
 import styles from '../../styles/Home.module.scss'
 
 const Technologies = () => {
