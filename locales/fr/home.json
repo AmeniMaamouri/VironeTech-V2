@@ -68,6 +68,10 @@
                 "label": "Sujet *",
                 "placeholder": "Entrer le sujet..."
             },
+            "tel":{
+                "label": "Numéro de téléphone *",
+                "placeholder": "Votre numéro de téléphone"
+            },
             "message": {
                 "label": "Message *",
                 "placeholder": "Entrer votre messages..."

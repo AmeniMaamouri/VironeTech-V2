@@ -11,8 +11,9 @@ const StartProject = () => {
             <div className={styles.container}>
                 <p className={styles.title}>{t('startProject.title')}</p>
                 <p className={styles.description}>{t('startProject.description')}</p>
-                <div className={styles.startProjctBtn}>
-                    <BaseButton bg="white" text={t('hero.btn')} width={'381px'} />
+                
+                <div style={{maxWidth:'360px', margin:"auto", marginTop:'40px'}} className={styles.startProjctBtn}>
+                <a  href='#contact'> <BaseButton bg="white" text={t('hero.btn')} width={'381px'} /></a>
                 </div>
             </div>
         </div>

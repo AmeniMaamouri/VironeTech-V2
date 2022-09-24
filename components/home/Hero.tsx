@@ -13,7 +13,10 @@ const Hero = () => {
             <h1 className={styles.description}>{t('hero.description')}</h1>
             <div className={styles.imgContainer}>
                 <Image alt='création des sites web, applications mobile et design' priority src={hero} width={700} height={465} />
-                <BaseButton bg="linear" text={t('hero.btn')} width={'381px'} />
+                <div style={{maxWidth:'360px', margin:"auto", marginTop:'40px'}}>
+                <a  href='#contact'><BaseButton bg="linear" text={t('hero.btn')} width={'381px'} /></a>
+                </div>
+               
             </div>
         </div>
     )

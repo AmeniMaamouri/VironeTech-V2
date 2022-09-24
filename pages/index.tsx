@@ -1,8 +1,12 @@
 import type { NextPage } from 'next'
 import dynamic from 'next/dynamic'
 import Head from 'next/head'
+import Link from 'next/link'
 import { useEffect } from 'react'
+import { BsInstagram, BsLinkedin } from 'react-icons/bs'
+import { FaFacebookF } from 'react-icons/fa'
 import Technologies from '../components/home/Technologies'
+import styles from '../styles/Home.module.scss'
 
 const Navbar = dynamic(() => import('../components/navbar'))
 const Hero = dynamic(() => import('../components/home/Hero'))
@@ -32,6 +36,13 @@ const Home: NextPage = () => {
       <Testimonials />
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#F9F9F9" fillOpacity="0.81" d="M0,96L80,112C160,128,320,160,480,165.3C640,171,800,149,960,138.7C1120,128,1280,128,1360,128L1440,128L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"></path></svg>
       <StartProject />
+      <div className={styles.socialLinksContainer}>
+        <div className={styles.socialLinks}>
+          <Link href={'https://www.facebook.com/'}><a target='_blank'><FaFacebookF /></a></Link>
+          <Link href={'/'}><a target='_blank'><BsLinkedin /></a></Link>
+          <Link href={'/'}><a target='_blank'><BsInstagram /></a></Link>
+        </div>
+      </div>
       <Contact />
       <Footer />
     </div>

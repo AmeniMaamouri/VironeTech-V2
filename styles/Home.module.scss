@@ -267,6 +267,13 @@
         }
     }
 
+    .phoneLabel {
+        font-size: 14px;
+        color: #1A1D32;
+        font-weight: 500;
+        margin-bottom: 12px;
+    }
+
     .map {
         width: 50%;
 
@@ -298,6 +305,21 @@
             bottom: 15px;
         }
 
+        .errorInputsPhone {
+            color: red;
+            font-size: 14px;
+            font-weight: 500;
+            position: relative;
+            bottom: -5px;
+        }
+
+        .errorOutlinePhone {
+            input {
+                border: 1px solid red !important;
+            }
+
+        }
+
         .inputInvalid {
             border: 1px solid red;
         }
@@ -320,6 +342,23 @@
                 width: 100%;
             }
         }
+    }
+
+    .secondInputsContainer {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .phone,
+        .subject {
+            width: 48% !important;
+
+            @media (max-width:600px) {
+                width: 100%;
+            }
+        }
+
+
     }
 
     .sendBtn {
@@ -358,7 +397,7 @@
             grid-column-gap: 10px;
         }
 
-        span{
+        span {
             border-radius: 15px;
         }
 
@@ -373,5 +412,28 @@
         flex-wrap: wrap;
 
 
+    }
+}
+
+.socialLinksContainer {
+    background-color: rgb(249, 249, 249);
+    margin-bottom: -60px;
+    .socialLinks {
+        width: 134px;
+        display: flex;
+
+        justify-content: space-between;
+        font-size: 18px;
+        padding-top: 60px;
+      
+        margin: auto;
+
+        svg {
+            cursor: pointer;
+        }
+
+        a {
+            color: black;
+        }
     }
 }

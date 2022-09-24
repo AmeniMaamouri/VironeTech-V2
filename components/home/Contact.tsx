@@ -2,10 +2,12 @@ import axios from 'axios';
 import useTranslation from 'next-translate/useTranslation';
 import dynamic from 'next/dynamic';
 import { useState } from 'react';
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styles from '../../styles/Home.module.scss';
+import PhoneInput from "react-phone-input-2";
+import 'react-phone-input-2/lib/style.css'
 
 const BaseButton = dynamic(() => import('../BaseButton/BaseButton'))
 
@@ -14,17 +16,18 @@ type Inputs = {
     firstAndLastName: string,
     email: string,
     subject: string,
+    phone: string
 };
 
 const Contact = () => {
     const { t } = useTranslation('home')
     const [loading, setLoading] = useState<boolean>(false)
-    const { register, handleSubmit, formState: { errors }, getValues, reset, setValue } = useForm<Inputs>();
+    const { register, handleSubmit, formState: { errors }, reset, setValue, control } = useForm<Inputs>();
 
     const onSubmit: SubmitHandler<Inputs> = async (contactInformations) => {
         setLoading(true)
         try {
-            await axios('http://api.vironetech.com/api/v1/send_mail', {
+            await axios('https://api.vironetech.com/api/v1/send_mail', {
                 method: 'POST',
                 data: contactInformations
             })
@@ -32,7 +35,7 @@ const Contact = () => {
             setValue('contentMessage', "")
             setLoading(false)
             toast.success(t('contact.success'))
-            
+
         } catch (error: unknown) {
             setLoading(false)
             toast.error(t('contact.failed'))
@@ -52,24 +55,54 @@ const Contact = () => {
                             <div className={styles.firstInputsContainer}>
                                 <div>
                                     <label htmlFor='name'>{t('contact.form.name.label')}</label>
-                                    <input value={getValues('firstAndLastName')} className={errors.firstAndLastName && styles.inputInvalid} id="name" type={'text'} placeholder={t('contact.form.name.placeholder')}  {...register("firstAndLastName", { required: true })} />
+                                    <input className={errors.firstAndLastName && styles.inputInvalid} id="name" type={'text'} placeholder={t('contact.form.name.placeholder')}  {...register("firstAndLastName", { required: true, validate: (value) => { return !!value.trim() }})} />
                                     {errors.firstAndLastName && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
                                 </div>
 
                                 <div>
                                     <label htmlFor='email'>{t('contact.form.email.label')}</label>
-                                    <input value={getValues('email')} id="email" className={errors.email && styles.inputInvalid} type={'text'} placeholder={t('contact.form.email.placeholder')}  {...register("email", { pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, required: true })} />
+                                    <input id="email" className={errors.email && styles.inputInvalid} type={'text'} placeholder={t('contact.form.email.placeholder')}  {...register("email", { pattern: /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/, required: true, validate: (value) => { return !!value.trim() } })} />
                                     {errors.email && <span className={styles.errorInputs}>{t('contact.form.errors.email')}</span>}
                                 </div>
                             </div>
-                            <div style={{ display: 'grid' }}>
-                                <label htmlFor='subject'>{t('contact.form.subject.label')}</label>
-                                <input value={getValues('subject')} id="subject" className={errors.subject && styles.inputInvalid} type={'text'} placeholder={t('contact.form.subject.placeholder')}  {...register("subject", { required: true })} />
-                                {errors.subject && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
+
+                            <div className={styles.secondInputsContainer}>
+                                <div className={`phone ${styles.phone}`}>
+                                    <p className={styles.phoneLabel}>{t('contact.form.tel.label')}</p>
+                                    <Controller
+                                        name="phone"
+                                        control={control}
+                                        rules={{
+                                            required: true,
+                                            validate: (value) => { return !!value.trim() }
+                                        }}
+                                        render={({ field: { onChange, value } }: any) => (
+                                            <>
+                                                <div className={errors.phone && styles.errorOutlinePhone}>
+                                                    <PhoneInput
+                                                        country={'tn'}
+                                                        value={value}
+                                                        onChange={onChange}
+                                                        placeholder={t('contact.form.tel.placeholder')}
+                                                    />
+                                                </div>
+                                                {errors.phone && errors.phone.type === "validate" && <p className={styles.errorInputsPhone}>{t('contact.form.errors.required')}</p>}
+                                                {errors.phone && errors.phone.type === "required" && <p className={styles.errorInputsPhone}>{t('contact.form.errors.required')}</p>}
+                                            </>
+                                        )}
+                                    />
+                                </div>
+                                <div className={styles.subject} style={{ display: 'grid' }}>
+                                    <label htmlFor='subject'>{t('contact.form.subject.label')}</label>
+                                    <input id="subject" className={errors.subject && styles.inputInvalid} type={'text'} placeholder={t('contact.form.subject.placeholder')}  {...register("subject", { required: true, validate: (value) => { return !!value.trim() } })} />
+                                    {errors.subject && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
+                                </div>
                             </div>
+
+
                             <div style={{ display: 'grid' }}>
                                 <label htmlFor='contentMessage'>{t('contact.form.message.label')}</label>
-                                <textarea value={getValues('contentMessage')} rows={9} className={errors.contentMessage && styles.inputInvalid} id="contentMessage" placeholder={t('contact.form.subject.placeholder')}  {...register("contentMessage", { required: true })} />
+                                <textarea rows={9} className={errors.contentMessage && styles.inputInvalid} id="contentMessage" placeholder={t('contact.form.subject.placeholder')}  {...register("contentMessage", { required: true, validate: (value) => { return !!value.trim() } })} />
                                 {errors.contentMessage && <span className={styles.errorInputs}>{t('contact.form.errors.required')}</span>}
                             </div>
 

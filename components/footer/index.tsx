@@ -1,8 +1,7 @@
 import useTranslation from 'next-translate/useTranslation'
+import { FaPhoneAlt } from 'react-icons/fa'
 import styles from './Footer.module.scss'
-import { FaFacebookF } from 'react-icons/fa'
-import { BsInstagram, BsLinkedin } from 'react-icons/bs'
-import Link from 'next/link'
+import { MdEmail } from "react-icons/md";
 
 const Footer = () => {
     const { t } = useTranslation('home')
@@ -10,10 +9,16 @@ const Footer = () => {
         <div className={styles.footer}>
             <div className={styles.container}>
                 <p>{t('footer')}</p>
-                <div className={styles.socialLinks}>
-                    <Link href={'https://www.facebook.com/'}><a target='_blank'><FaFacebookF /></a></Link>
-                    <Link href={'/'}><a target='_blank'><BsLinkedin /></a></Link>
-                    <Link href={'/'}><a target='_blank'><BsInstagram /></a></Link>
+                <div className={styles.mailAndPhone}>
+                    <div>
+                        <FaPhoneAlt />
+                        <p>+216 58 665 401</p>
+                    </div>
+                    <div>
+                        <MdEmail />
+                        <p>support@vironetech.com</p>
+                    </div>
+                  
                 </div>
             </div>
 
